@@ -1,39 +1,52 @@
 package org.example;
 
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-public class Mage {
+@Entity
+class Mage {
+    @Id
     private String name;
-    private int level;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Mage mage = (Mage) o;
-
-        if (level != mage.level) return false;
-        return Objects.equals(name, mage.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + level;
-        return result;
-    }
-
-    public Mage(String name, int level) {
-        this.name = name;
-        this.level = level;
-    }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getLevel() {
         return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    private int level;
+
+    public Tower getTower() {
+        return tower;
+    }
+
+    public void setTower(Tower tower) {
+        this.tower = tower;
+    }
+
+    @ManyToOne
+    private Tower tower;
+
+    public Mage() {
+        this.name = "Mage of NULL";
+        this.level = -1;
+        this.tower = null;
+    }
+
+    public Mage(String name, int level, Tower tower) {
+        this.name = name;
+        this.level = level;
+        this.tower = tower;
     }
 }
