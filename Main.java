@@ -1,5 +1,6 @@
 package org.example;
 
+<< HEAD
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
@@ -12,5 +13,10 @@ public class Main {
         //assertEquals("done", controller.save("Gandalf", 20));
         //verify(repository).save(new Mage("Gandalf", 20));
         controller.save("Gandalf", 20);
+==
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+> origin/master
     }
 }
